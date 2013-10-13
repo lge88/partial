@@ -52,19 +52,24 @@ describe( 'partial', function() {
       return ( a + b ) * ( c - d );
     }
 
+    var _ = void 0;
     var assignArgs1 = partial( 1 );
     var assignArgs2 = partial( [ 1, 2, 3 ] );
     var assignArgs3 = partial( [ 1, 2, 3, 4 ] );
     var assignArgs4 = partial( [ 1, 2, 3, 4, 5 ] );
+    var assignArgs5 = partial( [ 1, _, _, 4 ] );
+
     var fooPartial1 = assignArgs1( foo );
     var fooPartial2 = assignArgs2( foo );
     var fooPartial3 = assignArgs3( foo );
     var fooPartial4 = assignArgs4( foo );
+    var fooPartial5 = assignArgs5( foo );
 
     expect( fooPartial1( 2, 3, 4 ) ).to.equal( foo( 1, 2, 3, 4 ) );
     expect( fooPartial2( 4 ) ).to.equal( foo( 1, 2, 3, 4 ) );
     expect( fooPartial3() ).to.equal( foo( 1, 2, 3, 4 ) );
     expect( fooPartial4() ).to.equal( foo( 1, 2, 3, 4 ) );
+    expect( fooPartial5( 2, 3 ) ).to.equal( foo( 1, 2, 3, 4 ) );
   } );
 
 } );
