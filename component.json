@@ -7,7 +7,6 @@
   "dependencies": {
   },
   "development": {
-    "lge88/funct": "*"
     "lge88/expect.js": "*"
   },
   "repository": {
